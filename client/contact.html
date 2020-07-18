@@ -11,10 +11,10 @@
         {
             var xmlhttp = new XMLHttpRequest();
             var url = "getListOfContacts";
-		 
-            xmlhttp.onreadystatechange = function() 
+
+            xmlhttp.onreadystatechange = function()
             {
-              if (xmlhttp.readyState == 4 && xmlhttp.status == 200) 
+              if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
               {
                 var rows = JSON.parse(xmlhttp.responseText);
                 var outstring = '';
@@ -45,10 +45,8 @@
       <nav class="navbar navbar-default">
           <div class="container-fluid">
               <ul class="nav navbar-nav">
-                <li><a href="/"><b>Welcome</b></a></li>
                 <li><a href="/contact"><b>Contact</b></a></li>
                 <li><a href="/addContact"><b>Add Contact</b></a></li>
-                <li><a href="/stock"><b>Stock Page</b></a></li>
                 <li><a href="/logout"><b>Logout</b></a></li>
               </ul>
           </div>
