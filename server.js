@@ -23,7 +23,7 @@ app.use(session({
 app.listen(process.env.PORT || 9001, () => console.log('Listening on port 9001!'));
 
 app.get('/',function(req, res) {
-	res.sendFile(__dirname + '/client/welcome.html');
+	res.sendFile(__dirname + '/client/login.html');
 });
 
 // // GET method route for the contact page.
@@ -33,7 +33,7 @@ app.get('/contact',function(req, res) {
   {
     res.sendFile(__dirname + '/client/login.html');
   }
-  else 
+  else
   {
 		req.session.value += 1;
   }
@@ -47,7 +47,7 @@ app.get('/addContact',function(req, res) {
   {
     res.sendFile(__dirname + '/client/login.html');
   }
-  else 
+  else
   {
 		req.session.value += 1;
   }
@@ -60,7 +60,7 @@ app.get('/stock', function (req, res) {
   {
     res.sendFile(__dirname + '/client/login.html');
   }
-  else 
+  else
   {
 		req.session.value += 1;
   }
@@ -149,7 +149,7 @@ app.post('/sendLoginDetails', function(req, res) {
   //server receiving the form data
   req.on('data', function(data) {
     reqBody += data;
-  }); 
+  });
 
   const qs = require('querystring');
 
