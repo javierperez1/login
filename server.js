@@ -125,13 +125,6 @@ app.post('/postContact', function(req, res) {
     if(err) throw err;
   });
 
-  //DELETE TABLE
-  //-----------
-  con.query('DELETE FROM tbl_contacts', rowTobeInserted, function(err, result) {
-    if(err) throw err;
-  });
-  //-----------
-
   res.sendFile(__dirname + '/client/contact.html');
 });
 
