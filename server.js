@@ -22,11 +22,12 @@ app.use(session({
 // server listens on port 9007 for incoming connections
 app.listen(process.env.PORT || 9001, () => console.log('Listening on port 9001!'));
 
+//default page
 app.get('/',function(req, res) {
 	res.sendFile(__dirname + '/client/login.html');
 });
 
-// // GET method route for the contact page.
+// GET method route for the contact page.
 // It serves contact.html present in client folder
 app.get('/contact',function(req, res) {
   if(!req.session.value)
@@ -52,19 +53,6 @@ app.get('/addContact',function(req, res) {
 		req.session.value += 1;
   }
 	res.sendFile(__dirname + '/client/addContact.html');
-});
-
-//GET method for stock page
-app.get('/stock', function (req, res) {
-  if(!req.session.value)
-  {
-    res.sendFile(__dirname + '/client/login.html');
-  }
-  else
-  {
-		req.session.value += 1;
-  }
-	res.sendFile(__dirname + '/client/stock.html');
 });
 
 // GET method route for the login page.
@@ -98,7 +86,6 @@ app.get('/getListOfContacts', function(req, res) {
 });
 
 // POST method to insert details of a new contact to tbl_contacts table
-// DONE
 app.post('/postContact', function(req, res) {
   var reqBody = "";
   //server starts receiving the form data
@@ -137,6 +124,13 @@ app.post('/postContact', function(req, res) {
   con.query('INSERT tbl_contacts SET ?', rowTobeInserted, function(err, result) {
     if(err) throw err;
   });
+
+  //DELETE TABLE
+  //-----------
+  con.query('DELETE FROM tbl_contacts', rowTobeInserted, function(err, result) {
+    if(err) throw err;
+  });
+  //-----------
 
   res.sendFile(__dirname + '/client/contact.html');
 });
